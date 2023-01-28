@@ -1,3 +1,33 @@
-.hello-world {
-    color: lightcoral;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600");
+
+$gap: 10px;
+$board-bg-color: #0079bf;
+$appbar-bg-color: #0067a3;
+
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 15px;
+    line-height: 1.3em;
+}
+
+.trello-nhatdev-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 40px 50px 1fr;
+    background-color: $board-bg-color;
+
+    .navbar {
+        padding-left: $gap;
+        display: flex;
+        align-items: center;
+        &.app {
+            background-color: $appbar-bg-color;
+            font-size: 1.5rem;
+        }
+        &.board {
+            background-color: $board-bg-color;
+            font-size: 1.5rem;
+        }
+    }
 }
