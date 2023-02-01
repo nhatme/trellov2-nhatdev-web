@@ -32,7 +32,7 @@
     ul.task-list {
         list-style-type: none;
         margin: 0;
-        max-height: calc(100% - (#{$column-header-height} - #{$column-footer-height}));
+        max-height: calc(100% - (#{$column-header-height} + #{$column-footer-height}));
         overflow-y: auto;
         &::-webkit-scrollbar {
             -webkit-appearance: none;
