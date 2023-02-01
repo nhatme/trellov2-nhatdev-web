@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash'
 import './BoardContent.scss'
 import Column from 'components/Column/Column'
 import { initialData } from 'actions/initialData'
+import { mapOrder } from 'utilities/sorts'
 
 const BoardContent = () => {
   const [board, setBoard] = useState({})
@@ -13,7 +14,8 @@ const BoardContent = () => {
 
     if (boardFromDB) {
       setBoard(boardFromDB)
-      setColumns(boardFromDB.columns)
+
+      setColumns(mapOrder(boardFromDB.columns, boardFromDB.columnOrder, 'id'))
     }
   }, [])
 
@@ -23,7 +25,7 @@ const BoardContent = () => {
 
   return (
     <div className='board-content'>
-      {columns.map((column, index) => <Column key={index} Column={column} />)}
+      {columns.map((column, index) => <Column key={index} column={column} />)}
     </div>
   )
 }

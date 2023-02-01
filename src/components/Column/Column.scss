@@ -3,7 +3,7 @@
 .column {
     flex: 0 0 auto;
     width: 300px;
-    height: calc(100%-#{$gap});
+    height: 100%;
     &:not(:first-child) {
         margin-left: $gap;
     }
@@ -32,7 +32,7 @@
     ul.card-list {
         list-style-type: none;
         margin: 0;
-        max-height: calc(100% - (#{$column-header-height} - #{$column-footer-height}));
+        max-height: calc(100% - (#{$column-header-height} + #{$column-footer-height}));
         overflow-y: auto;
         &::-webkit-scrollbar {
             -webkit-appearance: none;

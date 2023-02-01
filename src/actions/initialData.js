@@ -11,10 +11,7 @@ export const initialData = {
                     cardOrder: ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6', 'card-7'],
                     cards: [
                         {
-                            id: 'card-1',
-                            boardId: 'board-1',
-                            columnId: 'column-1',
-                            title: 'Title of card 1',
+                            id: 'card-1', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 1',
                             cover: 'https://i.guim.co.uk/img/media/63de40b99577af9b867a9c57555a432632ba760b/0_266_5616_3370/master/5616.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=93458bbe24b9f88451ea08197888ab8e'
                         },
                         { id: 'card-2', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 2', cover: null },
