@@ -31,7 +31,7 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
         border-bottom-right-radius: $column-border-radius;
         color: #888;
         .footer-actions {
-            margin-left: $gap;
+            margin-left: 5px;
             cursor: pointer;
             &:hover {
                 color: #333;
