@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { Container as BootstrapContainer, Row, Col, Form, Button } from 'react-bootstrap'
 
@@ -13,9 +13,11 @@ const BoardContent = () => {
   const [board, setBoard] = useState({})
   const [columns, setColumns] = useState([])
   const [openNewColumnForm, setOpeNewColumnForm] = useState(false)
+  const toggleOpenNewColumnForm = () => { setOpeNewColumnForm(!openNewColumnForm) }
+
   const newColumnInputRef = useRef(null)
   const [newColumnTitle, setNewColumnTitle] = useState('')
-  const onNewColumnTitleChange = useCallback((e) => setNewColumnTitle(e.target.value), [])
+  const onNewColumnTitleChange = (e) => setNewColumnTitle(e.target.value)
 
   useEffect(() => {
     const boardFromDB = initialData.boards.find(board => board.id === 'board-1')
@@ -64,7 +66,6 @@ const BoardContent = () => {
     }
   }
 
-  const toggleOpenNewColumnForm = () => { setOpeNewColumnForm(!openNewColumnForm) }
 
   const addNewColumn = () => {
     if (!newColumnTitle) {
@@ -104,16 +105,17 @@ const BoardContent = () => {
       newColumns.splice(columnIndexToUpdate, 1)
     } else {
       //update column info
+      console.log(newColumnToUpdate)
       newColumns.splice(columnIndexToUpdate, 1, newColumnToUpdate)
     }
-    
+
     let newBoard = { ...board }
     newBoard.columnOrder = newColumns.map(c => c.id)
     newBoard.columns = newColumns
 
     setColumns(newColumns)
     setBoard(newBoard)
-    
+
   }
 
   return (
@@ -131,7 +133,11 @@ const BoardContent = () => {
       >
         {columns.map((column, index) => (
           <Draggable key={index}>
-            <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn} />
+            <Column
+              column={column}
+              onCardDrop={onCardDrop}
+              onUpdateColumn={onUpdateColumn}
+            />
           </Draggable>
         ))}
       </Container>
@@ -159,7 +165,7 @@ const BoardContent = () => {
                 onKeyDown={event => (event.key === 'Enter') && addNewColumn()}
               />
               <Button variant="success" size='sm' onClick={addNewColumn}>Add Column</Button>
-              <span className='cancel-new-column'
+              <span className='cancel-icon'
                 onClick={toggleOpenNewColumnForm}
               >
                 <i className='fa fa-trash icon'></i>
